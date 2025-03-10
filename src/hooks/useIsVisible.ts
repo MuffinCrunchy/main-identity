@@ -1,6 +1,6 @@
 import {useState, useEffect, RefObject} from 'react';
 
-export default function useIsVisible(ref: React.RefObject<HTMLDivElement | null>) {
+export default function useIsVisible(ref: RefObject<HTMLDivElement | null>) {
     const [isIntersecting, setIntersecting] = useState(false);
 
     useEffect(() => {
@@ -10,7 +10,9 @@ export default function useIsVisible(ref: React.RefObject<HTMLDivElement | null>
         );
 
         // Start observing the element
-        observer.observe(ref.current);
+        if (ref.current !== null) {
+            observer.observe(ref.current);
+        }
 
         // Cleanup the observer when the component unmounts or ref changes
         return () => {
