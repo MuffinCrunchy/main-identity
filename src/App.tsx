@@ -4,7 +4,6 @@ import AboutMe from "./components/AboutMe.tsx";
 import PersonalProjects from "./components/PersonalProjects.tsx";
 import MyExperience from "./components/MyExperience.tsx";
 import Skills from "./components/Skills.tsx";
-// import Modal from "./components/Modal.tsx";
 
 function App() {
   return (

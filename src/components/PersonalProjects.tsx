@@ -16,7 +16,7 @@ const PersonalProjects = () => {
     const isVisible : boolean = useIsVisible(ref);
     const [openModal, setOpenModal] = useState(false);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [currentContent, setCurrentContent] = useState<ProjectProps>(null);
+    const [currentContent, setCurrentContent] = useState<ProjectProps>();
 
     const nextSlide = (): void => {
         if (currentIndex === contents.length - 1) {
@@ -117,24 +117,24 @@ const PersonalProjects = () => {
             {
                 openModal &&
                 <Modal open={openModal} close={() => setOpenModal(false)}>
-                    <p className="font-questrial text-4xl font-bold tracking-widest pb-2 text-indigo-200">{currentContent.title}</p>
+                    <p className="font-questrial text-4xl font-bold tracking-widest pb-2 text-indigo-200">{currentContent ? currentContent.title : "Title Not Found"}</p>
                     <div className="flex-1 space-y-2">
-                        <p className="font-quicksand text-gray-100">{currentContent.desc}</p>
+                        <p className="font-quicksand text-gray-100">{currentContent ? currentContent.desc : "Lorem ipsum dolor amet"}</p>
                         <div className="py-1 flex items-center text-sm text-gray-800 after:flex-1 after:border-t after:border-indigo-200 after:ms-6">
                             <p className="font-questrial tracking-wider text-lg font-medium text-indigo-200">Responsibilities</p>
                         </div>
                         <ul className="font-quicksand text-gray-100 px-3 max-h-62 overflow-y-auto scrollbar">
-                            {currentContent.resps.map((resp: string, index: number)=> (
+                            {currentContent ? currentContent.resps.map((resp: string, index: number)=> (
                                 <li key={index}>• {resp}</li>
-                            ))}
+                            )) : "Responsibilities Not Found"}
                         </ul>
                         <div className="py-1 flex items-center text-sm text-gray-800 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-white">
                             <p className="font-questrial tracking-wider text-lg font-medium text-indigo-200">Techstacks</p>
                         </div>
                         <ul className="flex flex-wrap space-x-1 font-quicksand text-indigo-200 *:bg-indigo-950 *:rounded-full *:border *:px-3 *:py-0.5 *:border-indigo-200/50 *:my-1">
-                            {currentContent.techs.map((tech: string, index: number) => (
+                            {currentContent ? currentContent.techs.map((tech: string, index: number) => (
                                 <li key={index}>{tech}</li>
-                            ))}
+                            )) : "No Techstacks"}
                         </ul>
                     </div>
                 </Modal>

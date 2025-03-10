@@ -17,7 +17,7 @@ const MyExperience = () => {
     const isVisible : boolean = useIsVisible(ref);
     const [openModal, setOpenModal] = useState(false);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [currentContent, setCurrentContent] = useState<ExpProps>(null);
+    const [currentContent, setCurrentContent] = useState<ExpProps>();
 
     const nextSlide = (): void => {
         if (currentIndex === contents.length - 1) {
@@ -122,19 +122,19 @@ const MyExperience = () => {
             {
                 openModal &&
                 <Modal open={openModal} close={() => setOpenModal(false)}>
-                    <p className="font-questrial text-4xl font-bold tracking-widest pb-2 text-indigo-200">{currentContent.role}</p>
+                    <p className="font-questrial text-4xl font-bold tracking-widest pb-2 text-indigo-200">{currentContent ? currentContent.role : "Role Not Found"}</p>
                     <div className="flex-1 space-y-2">
                         <div className="flex flex-1 justify-between items-center">
-                            <p className="font-quicksand text-gray-100">{currentContent.location}</p>
-                            <p className="font-quicksand text-gray-100">{currentContent.date}</p>
+                            <p className="font-quicksand text-gray-100">{currentContent ? currentContent.location : "Location Not Found" }</p>
+                            <p className="font-quicksand text-gray-100">{currentContent ? currentContent.date : "00/00/0000 - 00/00/0000"}</p>
                         </div>
                         <div className="py-1 flex items-center after:flex-1 after:border-t after:border-indigo-200 after:ms-6">
                             <p className="font-questrial tracking-wider text-lg font-medium text-indigo-200">Description</p>
                         </div>
                         <ul className="font-quicksand text-gray-100 px-3 max-h-150 overflow-y-auto scrollbar">
-                            {currentContent.descs.map((desc: string, index: number)=> (
+                            {currentContent ? currentContent.descs.map((desc: string, index: number)=> (
                                 <li key={index}>• {desc}</li>
-                            ))}
+                            )) : "Responsibilities Not Found"}
                         </ul>
                     </div>
                 </Modal>

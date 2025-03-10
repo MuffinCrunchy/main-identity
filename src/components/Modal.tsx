@@ -1,16 +1,9 @@
-// type ContentProps = {
-//     title: string;
-//     desc: string;
-//     resps: string[];
-//     techs: string[];
-// }
-
-import {MouseEventHandler} from "react";
+import {MouseEventHandler, ReactNode} from "react";
 import {
     FaPaw
 } from "react-icons/fa6";
 
-const Modal = ({open, close, children}: {open: boolean, close: MouseEventHandler<HTMLElement>, children: any}) => {
+const Modal = ({open, close, children}: {open: boolean, close: MouseEventHandler<HTMLElement>, children: ReactNode}) => {
     return (
         <div onClick={close} className={`fixed inset-0 flex justify-center items-center transition-colors ${open ? "visible bg-black/80" : "invisible"}`}>
             <div onClick={e => e.stopPropagation()} className={`w-1/2 p-6 bg-radial-[at_10%_20%] from-indigo-900 to-black to-indigo-950 rounded-xl  ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}`}>
