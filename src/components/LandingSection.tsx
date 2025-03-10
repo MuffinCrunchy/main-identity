@@ -8,7 +8,7 @@ const LandingSection = () => {
                         <p>Muhammad</p>
                     </div>
                     <div className="flex-1 space-y-2 font-quicksand text-2xl leading-tight tracking-widest">
-                        <p>back end developer -</p>
+                        <p>full stack developer -</p>
                         <p>machine learning engineer</p>
                     </div>
                 </div>
